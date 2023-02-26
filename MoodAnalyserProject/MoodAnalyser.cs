@@ -4,7 +4,7 @@ namespace MoodAnalyserProject
 {
     public class MoodAnalyser
     {
-        public string message = "I am in Sad Mood";
+        public string message = "I am in Happy Mood";
 
         public MoodAnalyser(string message)
         {
