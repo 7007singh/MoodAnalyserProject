@@ -28,7 +28,7 @@ namespace MoodAnalyserProject
             catch(NullReferenceException ex) 
             {
                 Console.WriteLine(ex.Message);
-                return ex.Message;
+                return "HAPPY";
             }
         }
     }
