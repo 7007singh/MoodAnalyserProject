@@ -4,8 +4,7 @@ namespace MoodAnalyserProject
 {
     public class MoodAnalyser
     {
-        public string message = "I am in Happy Mood";
-
+        public string message = "I am in happy mood";
         public MoodAnalyser(string message)
         {
             this.message = message;
@@ -15,13 +14,21 @@ namespace MoodAnalyserProject
         }
         public string AnalyseMood()
         {
-            if (message.ToLower().Contains("sad"))
+            try
             {
-                return "SAD";
+                if (message.ToLower().Contains("sad"))
+                {
+                    return "SAD";
+                }
+                else
+                {
+                    return "HAPPY";
+                }
             }
-            else
+            catch(NullReferenceException ex) 
             {
-                return "HAPPY";
+                Console.WriteLine(ex.Message);
+                return ex.Message;
             }
         }
     }
