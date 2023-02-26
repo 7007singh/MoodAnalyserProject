@@ -28,7 +28,7 @@ namespace MoodAnalyserProject
             catch(NullReferenceException ex) 
             {
                 Console.WriteLine(ex.Message);
-                return "HAPPY";
+                throw new CustomMoodAnalyserException("Message is null", CustomMoodAnalyserException.ExceptionType.NULL_MOOD);
             }
         }
     }
