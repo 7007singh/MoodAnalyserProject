@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoodAnalyserProject
 {
-    internal class MoodAnalyser
+    public class MoodAnalyser
     {
         public string message;
         public MoodAnalyser(string message)
@@ -15,13 +11,13 @@ namespace MoodAnalyserProject
         }
         public string AnalyseMood()
         {
-            if (message.ToLower().Contains("happy"))
+            if (message.ToLower().Contains("sad"))
             {
-                return "happy";
+                return "SAD";
             }
             else
             {
-                return "sad";
+                return "HAPPY";
             }
         }
     }
