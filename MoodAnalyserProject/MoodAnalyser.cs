@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Net.Http;
 
 namespace MoodAnalyserProject
 {
     public class MoodAnalyser
     {
-        public string message = "I am in Any Mood";
+        public string message = "I am in Sad Mood";
 
         public MoodAnalyser(string message)
         {
