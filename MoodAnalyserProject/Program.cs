@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoodAnalyserProject
 {
@@ -10,7 +6,9 @@ namespace MoodAnalyserProject
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("___Welcome analyzer problem___");
+            Console.WriteLine("___Welcome to mood analyzer program___");
+            MoodAnalyser moodAnalyser = new MoodAnalyser("I am in happy mood");
+            moodAnalyser.AnalyseMood();
         }
     }
 }
