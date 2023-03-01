@@ -9,7 +9,6 @@ namespace MoodAnalyserProject
     public class CustomMoodAnalyserException:Exception
     {
         public ExceptionType exceptionType;
-
         public enum ExceptionType
         {
             NULL_MOOD,
