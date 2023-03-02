@@ -19,10 +19,10 @@ namespace MoodAnalyserTestProject
 
         [TestMethod]
         //[DataRow(null, "HAPPY")]
-        public void Given_null_Message_Should_Return_User_Exception()
+        public void Given_Empty_Message_Should_Return_User_Exception()
         {
-            string message = null;
-            string expected = "Message is null";
+            string message = "";
+            string expected = "Message is empty";
             try
             {
                 MoodAnalyser mood = new MoodAnalyser(message);//Arrange

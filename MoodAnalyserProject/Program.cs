@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace MoodAnalyserProject
 {
@@ -7,8 +8,6 @@ namespace MoodAnalyserProject
         static void Main(string[] args)
         {
             Console.WriteLine("___Welcome to mood analyzer program___");
-            MoodAnalyser moodAnalyser = new MoodAnalyser();
-            moodAnalyser.AnalyseMood();
         }
     }
 }

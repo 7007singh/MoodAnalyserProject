@@ -16,8 +16,13 @@ namespace MoodAnalyserProject
         {
             try
             {
-                if (message.ToLower().Contains("sad"))
+                if (message.Equals(String.Empty))
                 {
+                    throw new CustomMoodAnalyserException("Message is empty", CustomMoodAnalyserException.ExceptionType.EMPTY_MOOD);
+                }
+                else if (message.ToLower().Contains("sad"))
+                {
+
                     return "SAD";
                 }
                 else
