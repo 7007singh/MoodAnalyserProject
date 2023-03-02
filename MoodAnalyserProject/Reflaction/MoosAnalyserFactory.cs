@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace MoodAnalyserProject.Reflaction
 {
-    internal class MoosAnalyserFactory
+    public class MoosAnalyserFactory
     {
-        public static void CreateMoodAnalyserObject(string className, string constructor)
+        public static object CreateMoodAnalyserObject(string className, string constructor)
         {
             string pattern = "." + constructor + "$";//MoodAnalyserProject.MoosAnalyser
             bool result = Regex.IsMatch(className, pattern);
@@ -21,6 +21,7 @@ namespace MoodAnalyserProject.Reflaction
                 Type moodAnalyserType = assembly.GetType(className);
                 Activator.CreateInstance(moodAnalyserType);
             }
+            return null;
         }
     }
 }

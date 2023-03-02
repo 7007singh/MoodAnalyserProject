@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoodAnalyserProject;
+using MoodAnalyserProject.Reflaction;
 
 namespace MoodAnalyserTestProject
 {
@@ -33,6 +34,16 @@ namespace MoodAnalyserTestProject
             {
                 Assert.AreEqual(expected, ex.Message);
             }
+        }
+        [TestMethod]
+        [TestCategory("Reflaction")]
+        [DataRow("MoodAnalyserProject.MoodAnalyser", "MoodAnalyser")]
+        public void Given_MoodAnalyser_Class_Name_Should_Return_MoodAnalyser_Object(string className, string constructor)
+        {
+            //MoosAnalyserFactory factory = new MoosAnalyserFactory();
+            MoodAnalyser expected = new MoodAnalyser();
+            object obj = MoosAnalyserFactory.CreateMoodAnalyserObject(className, constructor);
+            expected.Equals(obj);
         }
     }
 }
