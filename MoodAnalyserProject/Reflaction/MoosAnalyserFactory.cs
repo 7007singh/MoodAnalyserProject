@@ -12,23 +12,26 @@ namespace MoodAnalyserProject.Reflaction
     {
         public static object CreateMoodAnalyserObject(string className, string constructor)
         {
-            string pattern = "." + constructor + "$";//MoodAnalyserProject.MoosAnalyser
-            bool result = Regex.IsMatch(className, pattern);
-            if (result)
+            string pattern = @"." + constructor + "$";//MoodAnalyserProject.MoodAnalyser
+            Match result = Regex.Match(className, pattern);
+            if (result.Success)
             {
                 try
                 {
+
                     Assembly assembly = Assembly.GetExecutingAssembly();
                     Type moodAnalyserType = assembly.GetType(className);
-                    Activator.CreateInstance(moodAnalyserType);
+                    return Activator.CreateInstance(moodAnalyserType);
                 }
-                catch (Exception)
+                catch(ArgumentNullException)
                 {
-                    Console.WriteLine("Constructor not found");
+                    throw new CustomMoodAnalyserException("Class not found", CustomMoodAnalyserException.ExceptionType.CLASS_NOT_FOUND);
                 }
             }
-            //throw new CustomMoodAnalyserException("Class not found", CustomMoodAnalyserException.ExceptionType.CLASS_NOT_FOUND);
-            throw new CustomMoodAnalyserException("Constructor not found", CustomMoodAnalyserException.ExceptionType.CONSTRUCTOR_NOT_FOUND);
+            else
+            {
+                throw new CustomMoodAnalyserException("Constructor not found", CustomMoodAnalyserException.ExceptionType.CONSTRUCTOR_NOT_FOUND);
+            }
         }
     }
 }
