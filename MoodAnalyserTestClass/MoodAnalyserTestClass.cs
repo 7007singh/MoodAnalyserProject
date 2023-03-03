@@ -37,10 +37,11 @@ namespace MoodAnalyserTestProject
         }
         [TestMethod]
         [TestCategory("Reflaction")]
-        [DataRow("MoodAnalyserProject.Program", "MoodAnalyser")]
+        [DataRow("MoodAnalyserProject.MoodAnalyser", "CustomMoodAnalyserException")]
         public void Given_MoodAnalyser_Class_Name_Should_Return_MoodAnalyser_Object(string className, string constructor)
         {
-            string expectedMessage = "Class not found";
+            //string expectedMessage = "Class not found";
+            string expectedResult = "Constructor not found";
             try
             {
                 MoodAnalyser expected = new MoodAnalyser();
@@ -49,7 +50,7 @@ namespace MoodAnalyserTestProject
             }
             catch(CustomMoodAnalyserException ex)
             {
-                Assert.AreEqual(expectedMessage, ex.Message);
+                Assert.AreEqual(expectedResult, ex.Message);
             }
         }
     }
