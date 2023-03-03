@@ -16,7 +16,7 @@ namespace MoodAnalyserProject
         {
             try
             {
-                if (message.Equals(String.Empty))
+                if (message.Equals(string.Empty))
                 {
                     throw new CustomMoodAnalyserException("Message is empty", CustomMoodAnalyserException.ExceptionType.EMPTY_MOOD);
                 }

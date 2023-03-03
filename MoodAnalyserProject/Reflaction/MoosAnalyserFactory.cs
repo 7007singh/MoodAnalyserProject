@@ -14,14 +14,20 @@ namespace MoodAnalyserProject.Reflaction
         {
             string pattern = "." + constructor + "$";//MoodAnalyserProject.MoosAnalyser
             bool result = Regex.IsMatch(className, pattern);
-
-            if (result)
+            try
             {
-                Assembly assembly = Assembly.GetExecutingAssembly();
-                Type moodAnalyserType = assembly.GetType(className);
-                Activator.CreateInstance(moodAnalyserType);
+                if (result)
+                {
+                    Assembly assembly = Assembly.GetExecutingAssembly();
+                    Type moodAnalyserType = assembly.GetType(className);
+                    Activator.CreateInstance(moodAnalyserType);
+                }
             }
-            return null;
+            catch (Exception)
+            {
+                Console.WriteLine("Class not found");
+            }
+            throw new CustomMoodAnalyserException("Class not found", CustomMoodAnalyserException.ExceptionType.CLASS_NOT_FOUND);
         }
     }
 }

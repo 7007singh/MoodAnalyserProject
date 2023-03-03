@@ -37,13 +37,20 @@ namespace MoodAnalyserTestProject
         }
         [TestMethod]
         [TestCategory("Reflaction")]
-        [DataRow("MoodAnalyserProject.MoodAnalyser", "MoodAnalyser")]
+        [DataRow("MoodAnalyserProject.Program", "MoodAnalyser")]
         public void Given_MoodAnalyser_Class_Name_Should_Return_MoodAnalyser_Object(string className, string constructor)
         {
-            //MoosAnalyserFactory factory = new MoosAnalyserFactory();
-            MoodAnalyser expected = new MoodAnalyser();
-            object obj = MoosAnalyserFactory.CreateMoodAnalyserObject(className, constructor);
-            expected.Equals(obj);
+            string expectedMessage = "Class not found";
+            try
+            {
+                MoodAnalyser expected = new MoodAnalyser();
+                object actual = MoosAnalyserFactory.CreateMoodAnalyserObject(className, constructor);
+                expected.Equals(actual);
+            }
+            catch(CustomMoodAnalyserException ex)
+            {
+                Assert.AreEqual(expectedMessage, ex.Message);
+            }
         }
     }
 }
