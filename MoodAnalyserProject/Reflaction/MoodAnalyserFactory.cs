@@ -36,16 +36,20 @@ namespace MoodAnalyserProject.Reflaction
         public static object CreateMoodAnalyserObjectWithParameterizedObject(string className, string constructor, string message)
         {
             Type type = typeof(MoodAnalyser);
-            if (type.Name.Contains(className) || type.FullName.Equals(className))
+            if (type.Name.Contains(className) || type.FullName.Contains(className))
             {
                 if (type.Name.Equals(constructor))
                 {
                     ConstructorInfo constructorInfo = type.GetConstructor(new Type[] { typeof(string) });
                     var obj = constructorInfo.Invoke(new object[] { message });
                     return obj;
-                } 
+                }
+                return default;
             }
-            return default;
+            else
+            {
+                throw new CustomMoodAnalyserException("Class not found", CustomMoodAnalyserException.ExceptionType.CLASS_NOT_FOUND);
+            }
         }
     }
 }
