@@ -59,19 +59,22 @@ namespace MoodAnalyserTestProject
         }
         [TestMethod]
         [TestCategory("Reflaction")]
-        [DataRow("MoodAnalyserProject.Contact", "Contact")]
+        //[DataRow("MoodAnalyserProject.Contact", "Contact")]
+        [DataRow("MoodAnalyserProject.MoodAnalyser", "Customer")]
+
         public void Given_MoodAnalyserWithMessage_Using_Reflaction_Return_ParameterizedConstructor(string className, string constructor)
         {
+            //string message = "Class not found";
+            string message = "Constructor not found";
             try
             {
-                string message = "Class not found";
                 MoodAnalyser expected = new MoodAnalyser(message);
                 object actual = MoodAnalyserFactory.CreateMoodAnalyserObjectWithParameterizedObject(className, constructor, message);
                 expected.Equals(actual);
             }
             catch(CustomMoodAnalyserException ex)
             {
-                Assert.AreEqual("Class not found", ex.Message);
+                Assert.AreEqual(message, ex.Message);
             }
         }
     }

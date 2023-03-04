@@ -44,7 +44,10 @@ namespace MoodAnalyserProject.Reflaction
                     var obj = constructorInfo.Invoke(new object[] { message });
                     return obj;
                 }
-                return default;
+                else
+                {
+                    throw new CustomMoodAnalyserException("Constructor not found", CustomMoodAnalyserException.ExceptionType.CONSTRUCTOR_NOT_FOUND);
+                }
             }
             else
             {
