@@ -15,7 +15,8 @@ namespace MoodAnalyserProject
             EMPTY_MOOD,
             CLASS_NOT_FOUND,
             CONSTRUCTOR_NOT_FOUND,
-            NO_SUCH_METHOD
+            NO_SUCH_METHOD,
+            NO_SUCH_FIELD
         }
         public CustomMoodAnalyserException(string message, ExceptionType exceptionType):base(message)
         {
