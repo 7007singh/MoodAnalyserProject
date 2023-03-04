@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MoodAnalyserProject.Reflaction
 {
-    public class MoosAnalyserFactory
+    public class MoodAnalyserFactory
     {
         public static object CreateMoodAnalyserObject(string className, string constructor)
         {
@@ -32,6 +32,20 @@ namespace MoodAnalyserProject.Reflaction
             {
                 throw new CustomMoodAnalyserException("Constructor not found", CustomMoodAnalyserException.ExceptionType.CONSTRUCTOR_NOT_FOUND);
             }
+        }
+        public static object CreateMoodAnalyserObjectWithParameterizedObject(string className, string constructor, string message)
+        {
+            Type type = typeof(MoodAnalyser);
+            if (type.Name.Contains(className) || type.FullName.Equals(className))
+            {
+                if (type.Name.Equals(constructor))
+                {
+                    ConstructorInfo constructorInfo = type.GetConstructor(new Type[] { typeof(string) });
+                    var obj = constructorInfo.Invoke(new object[] { message });
+                    return obj;
+                } 
+            }
+            return default;
         }
     }
 }

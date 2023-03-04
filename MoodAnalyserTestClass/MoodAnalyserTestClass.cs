@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoodAnalyserProject;
 using MoodAnalyserProject.Reflaction;
+using System.Globalization;
 
 namespace MoodAnalyserTestProject
 {
@@ -47,7 +48,7 @@ namespace MoodAnalyserTestProject
             try
             {
                 object expected = new MoodAnalyser();
-                object actual = MoosAnalyserFactory.CreateMoodAnalyserObject(className, constructor);
+                object actual = MoodAnalyserFactory.CreateMoodAnalyserObject(className, constructor);
                 expected.Equals(actual);
             }
             catch(CustomMoodAnalyserException ex)
@@ -55,6 +56,13 @@ namespace MoodAnalyserTestProject
                 //Assert.AreEqual(expectedResult, ex.Message);
                 Assert.AreEqual(expectedMessage, ex.Message);
             }
+        }
+        [TestMethod]
+        [TestCategory("Reflaction")]
+        public void Given_MoodAnalyserWithMessage_Using_Reflaction_Return_ParameterizedConstructor()
+        {
+            string message = "I am in happy mood";
+            MoodAnalyser expected = new MoodAnalyser(message);
         }
     }
 }
