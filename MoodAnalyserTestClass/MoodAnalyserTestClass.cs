@@ -63,6 +63,8 @@ namespace MoodAnalyserTestProject
         {
             string message = "I am in happy mood";
             MoodAnalyser expected = new MoodAnalyser(message);
+            object actual = MoodAnalyserFactory.CreateMoodAnalyserObjectWithParameterizedObject("MoodAnalyserFactory", "MoodAnalyser", message);
+            expected.Equals(actual);
         }
     }
 }
