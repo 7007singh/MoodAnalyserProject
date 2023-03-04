@@ -77,5 +77,22 @@ namespace MoodAnalyserTestProject
                 Assert.AreEqual(message, ex.Message);
             }
         }
+        [TestMethod]
+        [TestCategory("Reflaction")]
+        [DataRow("I am i happy mood", "AnalyseMood", "HAPPY")]
+        public void Given_MoodAnalyser_Using_Reflaction_Invoke_Method(string message, string methodName, string expected)
+        {
+            string expectedMessage = "Method not found";
+            try
+            {
+                string actual = MoodAnalyserFactory.InvokeAnalyseMethod(message, methodName);
+                Assert.AreEqual(expected, actual);
+            }
+            catch(CustomMoodAnalyserException ex)
+            {
+                Assert.AreEqual(expectedMessage, ex.Message);
+            }
+        }
     }
 }
+    

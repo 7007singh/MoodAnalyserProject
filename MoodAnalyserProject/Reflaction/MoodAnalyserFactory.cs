@@ -54,5 +54,31 @@ namespace MoodAnalyserProject.Reflaction
                 throw new CustomMoodAnalyserException("Class not found", CustomMoodAnalyserException.ExceptionType.CLASS_NOT_FOUND);
             }
         }
+        public static string InvokeAnalyseMethod(string message, string methodName)
+        {
+            try
+            {
+                Type type = typeof(MoodAnalyser);
+                object moodAnalyseObject = CreateMoodAnalyserObjectWithParameterizedObject("MoodAnalyserProject.MoodAnalyser", "MoodAnalyser", message);
+                MethodInfo methodInfo = type.GetMethod(methodName);
+                object info = methodInfo.Invoke(moodAnalyseObject, null);
+                return info.ToString();
+            }
+            catch (CustomMoodAnalyserException ex)
+            {
+                if (ex.Message.Equals("Class not found"))
+                {
+                    throw new CustomMoodAnalyserException("Class not found", CustomMoodAnalyserException.ExceptionType.CLASS_NOT_FOUND);
+                }
+                else
+                {
+                    throw new CustomMoodAnalyserException("Constructor not found", CustomMoodAnalyserException.ExceptionType.CONSTRUCTOR_NOT_FOUND);
+                }
+            }
+            catch(Exception)
+            {
+                throw new CustomMoodAnalyserException("Method not found", CustomMoodAnalyserException.ExceptionType.NO_SUCH_METHOD);
+            }
+        }
     }
 }
